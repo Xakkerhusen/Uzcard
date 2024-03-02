@@ -22,21 +22,6 @@ public class SpringSecurityConfig {
     @Autowired
     private JWTTokenFilter jwtTokenFilter;
     public static String[] AUTH_WHITELIST = {
-
-
-            "/auth/*",
-            "/auth/verification/email/*",
-            "/category/any/*",
-            "/attach/**",
-            "/tagName/**",
-
-            "/channel/getById/*",
-
-            "/attach/**",
-            "/attach/**",
-            "/tagName/**",
-            "/channel/getById/*",
-
             "/v2/api-docs",
             "/configuration/ui",
             "/configuration/security",
@@ -45,18 +30,7 @@ public class SpringSecurityConfig {
             "/v3/api-docs/**",
             "/swagger-ui/**",
             "/swagger-resources",
-            "/swagger-resources/**",
-            "/comment/replyList/*",
-
-            "/channel/getById/*",
-            "/channel/",
-            "/video/**",
-            "/video_tag/getVideoTagListByVideoId/{video_id}",
-
-            "*/getAllByChannelId",
-            "*/getDetail/*"
-
-
+            "/swagger-resources/**"
     };
 
     @Bean
