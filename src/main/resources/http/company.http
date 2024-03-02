@@ -1,0 +1,14 @@
+### create Company(ADMIN)
+POST localhost:8080/company/create
+#Authorization:
+Content-Type: application/json
+
+{
+  "name": "AloqaBank",
+  "address": "Andijon",
+  "contact": "Aloqa",
+  "visible": false,
+  "role": "BANK",
+  "phoneNummber": "+998941234567",
+  "password": "1111"
+}
