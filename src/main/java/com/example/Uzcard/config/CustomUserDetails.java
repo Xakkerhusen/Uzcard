@@ -3,7 +3,7 @@ package com.example.Uzcard.config;
 
 
 import com.example.Uzcard.enums.ProfileRole;
-import com.example.Uzcard.enums.ProfileStatus;
+import com.example.Uzcard.enums.Status;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -16,11 +16,11 @@ public class CustomUserDetails implements UserDetails {
     private String id;
     private String email;
     private String password;
-    private ProfileStatus status;
+    private Status status;
     private ProfileRole role;
     private String name;
 
-    public CustomUserDetails(String id, String email, String password, ProfileStatus status, ProfileRole role, String name) {
+    public CustomUserDetails(String id, String email, String password, Status status, ProfileRole role, String name) {
         this.id = id;
         this.email = email;
         this.password = password;
@@ -64,7 +64,7 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public boolean isEnabled() {
-        return status.equals(ProfileStatus.ACTIVE);
+        return status.equals(Status.ACTIVE);
     }
 
     public String getId() {

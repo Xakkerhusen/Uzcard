@@ -1,7 +1,7 @@
 package com.example.Uzcard.dto;
 
 import com.example.Uzcard.enums.ProfileRole;
-import com.example.Uzcard.enums.ProfileStatus;
+import com.example.Uzcard.enums.Status;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
@@ -16,7 +16,7 @@ public class ProfileDTO {
     private String name;
     private String surname;
     private LocalDateTime createdDate;
-    private ProfileStatus status;
+    private Status status;
     private ProfileRole role;private String password;
     private String email;
     private String phoneNumber;

@@ -1,12 +1,11 @@
 package com.example.Uzcard.entity;
 
 import com.example.Uzcard.enums.ProfileRole;
-import com.example.Uzcard.enums.ProfileStatus;
+import com.example.Uzcard.enums.Status;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.id.uuid.UuidGenerator;
 
 import java.time.LocalDateTime;
 
@@ -38,7 +37,7 @@ public class ProfileEntity {
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status")
-    private ProfileStatus status=ProfileStatus.ACTIVE;
+    private Status status= Status.ACTIVE;
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private ProfileRole role;
