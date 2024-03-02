@@ -17,11 +17,10 @@ public class HTTPRequestUtil {
             }
         }
         throw new ForbiddenException("Method not allowed");
-
     }
 
     public static JWTDTO getJWTDTO(HttpServletRequest request, ProfileRole... requiredRoleList) {
-        Integer id = (Integer) request.getAttribute("id");
+        String id = (String) request.getAttribute("id");
         ProfileRole role = (ProfileRole) request.getAttribute("role");
         JWTDTO dto = new JWTDTO(id,role);
 

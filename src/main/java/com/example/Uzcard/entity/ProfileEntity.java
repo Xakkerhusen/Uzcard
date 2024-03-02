@@ -41,4 +41,5 @@ public class ProfileEntity {
     @Enumerated(EnumType.STRING)
     @Column(name = "role")
     private ProfileRole role;
+
 }

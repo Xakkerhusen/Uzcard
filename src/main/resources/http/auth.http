@@ -1,0 +1,46 @@
+### Login
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "email": "uzcard@gmail.com",
+  "password": "12345"
+}
+
+
+### Registration
+POST http://localhost:8080/auth/registrationByEmail
+Accept-Language: EN
+Content-Type: application/json
+
+{
+  "name": "Ali",
+  "surname": "Aliyev",
+  "phone": "+998905382146",
+  "password": "12345",
+  "email": "uzcard@gmail.com"
+}
+
+
+### registration by phone
+POST http://localhost:8080/auth/registrationByPhoneNumber
+Accept-Language: EN
+Content-Type: application/json
+
+{
+  "name": "Ali",
+  "surname": "Aliyev",
+  "phone": "+998901234567",
+  "password": "12345",
+  "email": "uzcard@gmail.com"
+}
+
+
+###  verification by sms
+GET http://localhost:8080/auth/verificationByPhoneNumber
+Content-Type: application/json
+
+{
+  "code": "855524",
+  "phone": "+998905382146"
+}

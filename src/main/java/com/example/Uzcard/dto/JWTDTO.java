@@ -7,7 +7,7 @@ import lombok.Setter;
 @Setter
 @Getter
 public class JWTDTO {
-    private Integer id;
+    private String id;
 
     public JWTDTO(String email, ProfileRole role) {
         this.email = email;
@@ -17,18 +17,16 @@ public class JWTDTO {
     private String email;
     private ProfileRole role;
 
-    public JWTDTO(Integer id) {
+    public JWTDTO(String id) {
         this.id = id;
     }
 
-    public JWTDTO(Integer id, ProfileRole role) {
-        this.id = id;
-        this.role = role;
-    }
 
-    public JWTDTO(Integer id, String email, ProfileRole role) {
+    public JWTDTO(String id, String email, ProfileRole role) {
         this.id = id;
         this.email = email;
         this.role = role;
     }
+
+
 }
