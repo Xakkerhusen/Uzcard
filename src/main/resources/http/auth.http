@@ -1,10 +1,22 @@
 ### Login
 POST http://localhost:8080/auth/login
+Accept-Language: EN
 Content-Type: application/json
 
 {
   "email": "uzcard@gmail.com",
   "password": "12345"
+}
+
+
+### login company
+POST http://localhost:8080/auth/loginCompany
+Accept-Language: EN
+Content-Type: application/json
+
+{
+  "phoneNummber": "+998941234567",
+  "password": "1111"
 }
 
 
@@ -38,6 +50,7 @@ Content-Type: application/json
 
 ###  verification by sms
 GET http://localhost:8080/auth/verificationByPhoneNumber
+Accept-Language: EN
 Content-Type: application/json
 
 {

@@ -1,22 +1,16 @@
 package com.example.Uzcard.dto;
 
 import com.example.Uzcard.enums.CompanyRole;
-import com.example.Uzcard.utils.RandomUtil;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
 
 import java.time.LocalDateTime;
-import java.util.Random;
-import java.util.UUID;
 
 @Setter
 @Getter
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class CompanyDTO {
-
     private String id;
     private String name;
     private String address;
@@ -27,5 +21,5 @@ public class CompanyDTO {
     private String code ;
     private String phoneNummber;
     private String password;
-
+    private String jwt;
 }

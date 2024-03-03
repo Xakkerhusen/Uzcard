@@ -1,14 +1,13 @@
 package com.example.Uzcard.service;
 
 import com.example.Uzcard.dto.*;
+import com.example.Uzcard.entity.CompanyEntity;
 import com.example.Uzcard.entity.EmailSendHistoryEntity;
 import com.example.Uzcard.entity.ProfileEntity;
 import com.example.Uzcard.entity.SmsHistoryEntity;
-import com.example.Uzcard.enums.AppLanguage;
-import com.example.Uzcard.enums.ProfileRole;
-import com.example.Uzcard.enums.SmsStatus;
-import com.example.Uzcard.enums.Status;
+import com.example.Uzcard.enums.*;
 import com.example.Uzcard.exp.AppBadException;
+import com.example.Uzcard.repository.CompanyRepository;
 import com.example.Uzcard.repository.EmailSendHistoryRepository;
 import com.example.Uzcard.repository.ProfileRepository;
 import com.example.Uzcard.repository.SmsHistoryRepository;
@@ -44,6 +43,9 @@ public class AuthService {
 
     @Autowired
     private SmsServerService smsServerService;
+
+    @Autowired
+    private CompanyRepository companyRepository;
     private int count = 0;
 
 
@@ -190,7 +192,6 @@ public class AuthService {
         return true;
     }
 
-
     public String smsVerification(SmsSendDTO dto, AppLanguage language) {
         if (count > 3) {
             log.warn("To many attempt Please try after 1 minute{}", dto.getPhone());
@@ -232,5 +233,35 @@ public class AuthService {
         count++;
         return "This code did not match";
     }
+
+    public CompanyDTO authCompany(AuthCompanyDTO company, AppLanguage language) {
+
+        Optional<CompanyEntity> optional = companyRepository.findByPhoneNummberAndPassword(company.getPhoneNummber(), company.getPassword());
+
+        if (optional.isEmpty()) {
+            log.warn("Phone or Password is wrong {}", company.getPhoneNummber());
+            throw new AppBadException(resourceBundleService.getMessage("Phone.or.Password.is.wrong", language));
+        }
+
+        CompanyEntity companyEntity = optional.get();
+        CompanyDTO dto = new CompanyDTO();
+
+        if (companyEntity.getRole().equals(CompanyRole.BANK)) {
+            dto.setName(companyEntity.getName());
+            dto.setRole(companyEntity.getRole());
+            dto.setPhoneNummber(companyEntity.getPhoneNummber());
+            dto.setAddress(companyEntity.getAddress());
+            dto.setJwt(JWTUtil.encodeBank(companyEntity.getPhoneNummber(), companyEntity.getRole()));
+            return dto;
+        } else {
+            dto.setName(companyEntity.getName());
+            dto.setRole(companyEntity.getRole());
+            dto.setPhoneNummber(companyEntity.getPhoneNummber());
+            dto.setAddress(companyEntity.getAddress());
+            dto.setJwt(JWTUtil.encodePayment(companyEntity.getPhoneNummber(), companyEntity.getRole()));
+            return dto;
+        }
+    }
+
 
 }
