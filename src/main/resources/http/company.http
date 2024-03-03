@@ -4,11 +4,23 @@ POST localhost:8080/company/create
 Content-Type: application/json
 
 {
-  "name": "AloqaBank",
-  "address": "Andijon",
-  "contact": "Aloqa",
+  "name": "Asaka Bank",
+  "address": "Buxoro",
+  "contact": "HUMO",
   "visible": false,
   "role": "BANK",
-  "phoneNummber": "+998941234567",
-  "password": "1111"
+  "phoneNummber": "+998944443322",
+  "password": "9860"
+}
+
+### update Company(Admin)
+PUT localhost:8080/company/update/1
+#Authorization:
+#Accept-Language:
+Content-Type: application/json
+
+{
+  "address": "Toshkent",
+  "contact": "UzCard",
+  "password": "8600"
 }
