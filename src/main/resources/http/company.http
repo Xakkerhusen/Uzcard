@@ -4,23 +4,39 @@ POST localhost:8080/company/create
 Content-Type: application/json
 
 {
-  "name": "Asaka Bank",
-  "address": "Buxoro",
-  "contact": "HUMO",
+  "name": "SQB",
+  "address": "Toshkent",
+  "contact": "MacterCard",
   "visible": false,
   "role": "BANK",
-  "phoneNummber": "+998944443322",
-  "password": "9860"
+  "phoneNummber": "331112233",
+  "password": "4520",
+  "code": "1111"
 }
 
 ### update Company(Admin)
-PUT localhost:8080/company/update/1
+PUT localhost:8080/company/update/38b25efe-bbe1-422a-a66e-f209f361e29
 #Authorization:
-#Accept-Language:
+Accept-Language:EN
 Content-Type: application/json
 
 {
   "address": "Toshkent",
-  "contact": "UzCard",
-  "password": "8600"
+  "name": "QQB",
+  "contact": "HUMO",
+  "password": "1111",
+  "phoneNumber": "882001030",
+  "code": "9860"
 }
+
+### pagination Company(Admin)
+GET localhost:8080/company/pagination?page=1&size=3
+#Authorization:
+
+### delete  Company(Admin)
+PUT localhost:8080/company/delete/8e713019-203d-4344-ab1b-59587c67267lm,.
+#Authorization:
+#Accept-Language:
+
+
+
