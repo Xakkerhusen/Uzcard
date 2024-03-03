@@ -2,6 +2,7 @@ package com.example.Uzcard.utils;
 
 
 import com.example.Uzcard.dto.JWTDTO;
+import com.example.Uzcard.enums.CompanyRole;
 import com.example.Uzcard.enums.ProfileRole;
 import io.jsonwebtoken.*;
 
@@ -26,7 +27,6 @@ public class JWTUtil {
     }
 
 
-
     public static String encode(String email, ProfileRole role) {
         JwtBuilder jwtBuilder = Jwts.builder();
         jwtBuilder.issuedAt(new Date());
@@ -41,6 +41,41 @@ public class JWTUtil {
 
         jwtBuilder.expiration(new Date(System.currentTimeMillis() + (tokenLiveTime)));
         jwtBuilder.issuer("KunUzTest");
+        return jwtBuilder.compact();
+    }
+
+
+    public static String encodeBank(String phone, CompanyRole role) {
+        JwtBuilder jwtBuilder = Jwts.builder();
+        jwtBuilder.issuedAt(new Date());
+
+        SignatureAlgorithm sa = SignatureAlgorithm.HS512;
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), sa.getJcaName());
+
+        jwtBuilder.signWith(secretKeySpec);
+
+        jwtBuilder.claim("PhoneNummber", phone);
+        jwtBuilder.claim("role", role);
+
+        jwtBuilder.expiration(new Date(System.currentTimeMillis() + (tokenLiveTime)));
+        jwtBuilder.issuer("UzCard");
+        return jwtBuilder.compact();
+    }
+
+    public static String encodePayment(String phone, CompanyRole role) {
+        JwtBuilder jwtBuilder = Jwts.builder();
+        jwtBuilder.issuedAt(new Date());
+
+        SignatureAlgorithm sa = SignatureAlgorithm.HS512;
+        SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), sa.getJcaName());
+
+        jwtBuilder.signWith(secretKeySpec);
+
+        jwtBuilder.claim("PhoneNummber", phone);
+        jwtBuilder.claim("role", role);
+
+        jwtBuilder.expiration(new Date(System.currentTimeMillis() + (tokenLiveTime)));
+        jwtBuilder.issuer("UzCard");
         return jwtBuilder.compact();
     }
 
