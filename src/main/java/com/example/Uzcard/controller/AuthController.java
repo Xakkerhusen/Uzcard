@@ -1,9 +1,6 @@
 package com.example.Uzcard.controller;
 
-import com.example.Uzcard.dto.AuthDTO;
-import com.example.Uzcard.dto.ProfileDTO;
-import com.example.Uzcard.dto.RegistrationDTO;
-import com.example.Uzcard.dto.SmsSendDTO;
+import com.example.Uzcard.dto.*;
 import com.example.Uzcard.enums.AppLanguage;
 import com.example.Uzcard.service.AuthService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -32,6 +29,15 @@ public class AuthController {
         return ResponseEntity.ok(authService.auth(auth, appLanguage));
     }
 
+
+    @PostMapping("/loginCompany")
+    @Operation(summary = "Api for login company", description = "this api used for authorization for company")
+    public ResponseEntity<CompanyDTO> loginCompany(@Valid @RequestBody AuthCompanyDTO auth,
+                                                   @RequestHeader(value = "Accept-Language", defaultValue = "UZ")
+                                                   AppLanguage appLanguage) {
+        log.info("Login {} ", auth.getPhoneNummber());
+        return ResponseEntity.ok(authService.authCompany(auth, appLanguage));
+    }
 
 
     @PostMapping("/registrationByEmail")
